@@ -1,50 +1,42 @@
-let infoCourses = {
-    programming: [
-        {
-            id: 1,
-            tittle: 'Learn Python',
-            language: 'python',
-            views: 15000,
-            level: 'beginner'
-        },
-        {
-            id: 2,
-            tittle: 'Advanced Python',
-            language: 'python',
-            views: 10000,
-            level: 'advanced'
-        },
-        {
-            id: 3,
-            tittle: 'Learn JavaScript',
-            language: 'javascript',
-            views: 15000,
-            level: 'beginner'
-        },
-    ],
-    math: [
-        {
-            id: 1,
-            tittle: 'Learn Calculus',
-            language: 'calculus',
-            views: 14000,
-            level: 'beginner'
-        },
-        {
-            id: 2,
-            tittle: 'Learn Algebra',
-            language: 'algebra',
-            views: 15000,
-            level: 'beginner'
-        },
-        {
-            id: 3,
-            tittle: 'Learn Mechanics',
-            language: 'mechanics',
-            views: 11000,
-            level: 'intermediate'
-        }
-    ]
-}
+const express = require('express');
+const app = express();
 
-module.exports = infoCourses;
+const infoCourses = require('./Data/Data');
+
+
+// Programming Router
+const routerProgramming = require('./Routers/Programming');
+app.use('/api/courses/programming', routerProgramming);
+
+
+
+// Math Router
+const routerMath = require('./Routers/Math');
+app.use('/api/courses/math', routerMath);
+
+
+
+//Home Page
+app.get('/', (req, res) => {
+    res.send('Courses for everyone 👨‍💻 🧬 🧮');
+});
+
+
+
+//Courses
+app.get('/api/courses', (req, res) => {
+    res.json(infoCourses);
+});
+
+
+
+
+const PORT = 4000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}...`);
+});
+
+
+
+
