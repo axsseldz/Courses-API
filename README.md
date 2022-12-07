@@ -9,6 +9,7 @@ A server and an API were implemented to send course information to the browser. 
 
 ## Get Started
 
+
 1. Clone this repository and run:
 ```sh
 npm install
