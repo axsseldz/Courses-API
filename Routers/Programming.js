@@ -21,17 +21,19 @@ routerProgramming.get('/:language', (req, res) => {
         return res.status(404).end();
     }
 
-    // Filter by beginner level
+    // Filter by level
     if (req.query.level === 'beginner') {
-        return res.send(results.filter(level => level.level === 'beginner'))
-    }
+        res.send(results.filter(level => level.level === 'beginner'))
 
-    // Filter by advanced level 
-    if (req.query.level === 'advanced') {
-        return res.send(results.filter(level => level.level === 'advanced'))
+    } else if (req.query.level === 'advanced') {
+        res.send(results.filter(level => level.level === 'advanced'))
+    } else {
+        res.status(404).end();
     }
 
     res.json(results);
 });
+
+
 
 module.exports = routerProgramming;

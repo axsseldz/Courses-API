@@ -26,21 +26,21 @@ let infoCourses = {
         {
             id: 1,
             tittle: 'Learn Calculus',
-            language: 'calculus',
+            subject: 'calculus',
             views: 10000,
             level: 'beginner'
         },
         {
             id: 2,
             tittle: 'Learn Algebra',
-            language: 'algebra',
+            subject: 'algebra',
             views: 15000,
             level: 'beginner'
         },
         {
             id: 3,
             tittle: 'Learn Mechanics',
-            language: 'mechanics',
+            subject: 'mechanics',
             views: 11000,
             level: 'intermediate'
         }
