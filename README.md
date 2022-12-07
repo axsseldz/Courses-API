@@ -15,7 +15,7 @@ A server and an API were implemented to send course information to the browser. 
 npm install
 npm install nodemon
 ```
-2. Run the web app:
+2. Run the server:
 ```sh
 nodemon app.js
 ```
