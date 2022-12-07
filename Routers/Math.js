@@ -4,6 +4,9 @@ const { math } = require('../Data/Data');
 
 const routerMath = express.Router();
 
+// Process request
+routerMath.use(express.json());
+
 //Math Courses
 routerMath.get('/', (req, res) => {
     res.json(math);
@@ -32,6 +35,23 @@ routerMath.get('/:subject', (req, res) => {
 
     res.json(results);
 });
+
+routerMath.post('/', (req, res) => {
+    let newCourse = req.body;
+    math.push(newCourse)
+    res.json(math)
+})
+
+routerMath.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    const index = math.findIndex(course => course.id == id);
+
+    if (index >= 0) {
+        math.splice(index, 1);
+    }
+    res.json(math);
+});
+
 
 module.exports = routerMath;
 

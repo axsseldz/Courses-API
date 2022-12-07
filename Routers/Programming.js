@@ -4,6 +4,9 @@ const { programming } = require('../Data/Data');
 
 const routerProgramming = express.Router();
 
+// Process request
+routerProgramming.use(express.json());
+
 
 //Programming Courses
 routerProgramming.get('/', (req, res) => {
@@ -32,6 +35,23 @@ routerProgramming.get('/:language', (req, res) => {
     }
 
     res.json(results);
+});
+
+
+routerProgramming.post('/', (req, res) => {
+    let newCourse = req.body;
+    programming.push(newCourse)
+    res.json(programming)
+})
+
+routerProgramming.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    const index = programming.findIndex(course => course.id == id);
+
+    if (index >= 0) {
+        programming.splice(index, 1);
+    }
+    res.json(programming);
 });
 
 
